@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Apk Extract</string>
+    <string name="dang_xu_ly">Đang xử lý...</string>
+    <string name="title_dialog_extract" formatted="false">Đang lưu %s.apk...</string>
+    <string name="msg_dialog_extract" formatted="false">File APK của ứng dụng sẽ được lưu tại thư mục " %s ".</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="sort_apha">Sắp xếp theo Alphabet</string>
+    <string name="option2">Sắp xếp theo thời gian</string>
+    <string name="options3">Sắp xếp theo kích thước</string>
+    <string name="filter_all">Tất cả</string>
+    <string name="filter_user">Ứn dụng người dùng</string>
+    <string name="filter_system">Ứng dụng hệ thống</string>
+</resources>

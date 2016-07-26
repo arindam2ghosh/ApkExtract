@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:iconifiedByDefault="true"
+        android:orderInCategory="100"
+        android:title="search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom" />
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/ic_sort_black_24dp"
+        android:iconifiedByDefault="true"
+        android:orderInCategory="100"
+        android:title="Sort"
+        app:showAsAction="collapseActionView|ifRoom" >
+        <menu>
+            <item
+                android:id="@+id/action_sort_alpha"
+
+                android:iconifiedByDefault="true"
+                android:orderInCategory="100"
+                android:title="Theo Aphabet"
+                app:showAsAction="collapseActionView|ifRoom" />
+            <item
+                android:id="@+id/action_sort_size"
+                android:iconifiedByDefault="true"
+                android:orderInCategory="100"
+                android:title="Theo kích thước"
+                app:showAsAction="collapseActionView|ifRoom" />
+
+        </menu>
+
+    </item>
+    <item
+        android:id="@+id/action_filter"
+        android:icon="@drawable/ic_adb_black_24dp"
+        android:iconifiedByDefault="true"
+        android:orderInCategory="100"
+        android:title="Filter"
+        app:showAsAction="collapseActionView|ifRoom">
+
+        <menu>
+            <item
+                android:id="@+id/action_filter_all"
+
+                android:iconifiedByDefault="true"
+                android:orderInCategory="100"
+                android:title="Tất cả"
+                app:showAsAction="collapseActionView|ifRoom" />
+            <item
+                android:id="@+id/action_filter_user"
+
+                android:iconifiedByDefault="true"
+                android:orderInCategory="100"
+                android:title="Ứng dụng đã cài đặt"
+                app:showAsAction="collapseActionView|ifRoom" />
+            <item
+                android:id="@+id/action_filter_system"
+                android:iconifiedByDefault="true"
+                android:orderInCategory="100"
+                android:title="Ứng dụng hệ thống"
+                app:showAsAction="collapseActionView|ifRoom" />
+        </menu>
+
+    </item>
+</menu>
