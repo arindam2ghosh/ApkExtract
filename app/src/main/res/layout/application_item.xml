@@ -5,49 +5,55 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-        <LinearLayout
+    <LinearLayout
 
-            android:id="@+id/card_application"
-            android:padding="@dimen/margin_medium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground">
-            <ImageView
-                android:id="@+id/icon"
-               android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@mipmap/ic_launcher"/>
-            <LinearLayout
-                android:layout_weight="1"
+        android:id="@+id/card_application"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="@dimen/margin_medium">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/TextViewStyled_primary"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/margin_small"
-                android:gravity="center_vertical">
-                <TextView
-                    android:id="@+id/tv_name"
-                    style="@style/TextViewStyled_primary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="name"/>
-                <TextView
-                    android:id="@+id/tv_package"
-                    style="@style/TextViewStyled_secondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="package"/>
-            </LinearLayout>
-          <CheckBox
-              android:id="@+id/cb"
-              android:layout_marginRight="@dimen/margin_medium"
-              android:layout_gravity="right|center"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              />
+                android:layout_height="wrap_content"
+                android:text="name" />
+
+            <TextView
+                android:id="@+id/tv_package"
+                style="@style/TextViewStyled_secondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="package" />
         </LinearLayout>
-<View
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:background="@color/divider"/>
+
+        <CheckBox
+            android:id="@+id/cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="@dimen/margin_medium" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
 
 </LinearLayout>

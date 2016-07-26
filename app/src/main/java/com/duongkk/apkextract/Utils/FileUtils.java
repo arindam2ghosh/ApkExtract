@@ -36,7 +36,7 @@ public class FileUtils {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         Uri uri = Uri.parse(Environment.getExternalStorageDirectory().getPath()
                 + getFolder(context));
-        intent.setDataAndType(uri, "text/csv");
+        intent.setDataAndType(uri, "resource/folder");
         context.startActivity(Intent.createChooser(intent, "Open folder"));
     }
     public static File SaveImage(Context context,Bitmap finalBitmap) {

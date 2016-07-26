@@ -78,7 +78,12 @@ public class AdapterApplication extends RecyclerView.Adapter<AdapterApplication.
             });
         }
     }
-
+    public void resetView(boolean isChecked){
+        if(!isChecked) sparseBooleanArray.clear();
+        for (int i = 0; i < listApplications.size(); i++) {
+            listApplications.get(i).setChecked(false);
+        }
+    }
     private void setCheckedApp(boolean isChecked, int position, Application app) {
         sparseBooleanArray.put(position,isChecked);
         app.setChecked(isChecked);

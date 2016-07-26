@@ -60,7 +60,7 @@ public class CommonUtils {
         return color;
     }
 
-    public static Bitmap drawableToBitmap (Drawable drawable) {
+    public static Bitmap drawableToBitmap (Drawable drawable,Context context) {
         Bitmap bitmap = null;
 
         if (drawable instanceof BitmapDrawable) {
@@ -75,11 +75,11 @@ public class CommonUtils {
         } else {
             bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
         }
-
-        Canvas canvas = new Canvas(bitmap);
+        Bitmap bmResult = Bitmap.createScaledBitmap(bitmap,context.getResources().getDimensionPixelSize(R.dimen.icon_app_size),context.getResources().getDimensionPixelSize(R.dimen.icon_app_size),false);
+        Canvas canvas = new Canvas(bmResult);
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
-        return bitmap;
+        return bmResult;
     }
 //    public static boolean verifyEditext(Context context, @Nullable EditText mEdtPass, @Nullable EditText mEdtFirstName,@Nullable EditText mEdtLastName, @Nullable EditText mEdtPass2, @Nullable EditText mEdtAddress, @Nullable EditText mEdtPhone) {
 //        if (mEdtPhone != null && (mEdtPhone.getText().length() < 9 || mEdtPhone.getText().length() > 11)) {

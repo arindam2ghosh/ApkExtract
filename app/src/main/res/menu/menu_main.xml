@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_search"
-        android:icon="@drawable/ic_search_black_24dp"
+        android:icon="@drawable/ic_magnify"
         android:iconifiedByDefault="true"
         android:orderInCategory="100"
         android:title="search"
@@ -11,7 +11,7 @@
         app:showAsAction="collapseActionView|ifRoom" />
     <item
         android:id="@+id/action_sort"
-        android:icon="@drawable/ic_sort_black_24dp"
+        android:icon="@drawable/ic_sort_variant"
         android:iconifiedByDefault="true"
         android:orderInCategory="100"
         android:title="Sort"
@@ -36,7 +36,7 @@
     </item>
     <item
         android:id="@+id/action_filter"
-        android:icon="@drawable/ic_adb_black_24dp"
+        android:icon="@drawable/ic_android_debug_bridge"
         android:iconifiedByDefault="true"
         android:orderInCategory="100"
         android:title="Filter"

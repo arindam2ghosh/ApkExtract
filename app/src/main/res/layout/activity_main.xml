@@ -61,7 +61,7 @@
         android:onClick="onClick"
         android:layout_gravity="end|bottom"
         app:fabSize="normal"
-        android:src="@drawable/ic_move_to_inbox_black_24dp"
+        android:src="@drawable/ic_package_down"
         android:visibility="gone"
         app:fab_colorNormal="@color/material_blue_500"
         app:fab_colorPressed="@color/material_blue_700"

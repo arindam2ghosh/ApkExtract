@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity implements AdapterApplicatio
                 listCurrentApps.clear();
                 listCurrentApps.addAll(mListAllApps);
                 mRecyclerView.setAdapter(currentAdapterApp);
+                currentAdapterApp.resetView(false);
+                currentAdapterApp.notifyDataSetChanged();
+                mBtnExtract.setVisibility(View.GONE);
                 break;
             }
             case R.id.action_filter_system:{
@@ -112,6 +115,9 @@ public class MainActivity extends AppCompatActivity implements AdapterApplicatio
                 listCurrentApps.addAll(mListSystemApps);
                 code = 1;
                 mRecyclerView.setAdapter(currentAdapterApp);
+                currentAdapterApp.resetView(false);
+                currentAdapterApp.notifyDataSetChanged();
+                mBtnExtract.setVisibility(View.GONE);
                 break;
             }
             case R.id.action_filter_user:{
@@ -119,6 +125,9 @@ public class MainActivity extends AppCompatActivity implements AdapterApplicatio
                 listCurrentApps.addAll(mListUserApps);
                 code = 2;
                 mRecyclerView.setAdapter(currentAdapterApp);
+                currentAdapterApp.resetView(false);
+                currentAdapterApp.notifyDataSetChanged();
+                mBtnExtract.setVisibility(View.GONE);
                 break;
             }
 
@@ -140,7 +149,8 @@ public class MainActivity extends AppCompatActivity implements AdapterApplicatio
                        }
                    });
                }
-
+               currentAdapterApp.resetView(false);
+               currentAdapterApp.notifyDataSetChanged();
                break;
            }
             case  R.id.action_sort_size: {
@@ -166,12 +176,14 @@ public class MainActivity extends AppCompatActivity implements AdapterApplicatio
                     });
 
                 }
+                currentAdapterApp.resetView(false);
+                currentAdapterApp.notifyDataSetChanged();
                 break;
             }
 
         }
 
-        currentAdapterApp.notifyDataSetChanged();
+
         return true;
     }
 
@@ -264,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements AdapterApplicatio
                     app.setmIcon(icon);
                     app.setmName(title);
                     app.setmPackage(strPackageName);
-                    Bitmap bmIcon = CommonUtils.drawableToBitmap(icon);
+                    Bitmap bmIcon = CommonUtils.drawableToBitmap(icon,getBaseContext());
                     app.setmBitmapIcon(bmIcon);
                     if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                         app.setSystemApp(false);
