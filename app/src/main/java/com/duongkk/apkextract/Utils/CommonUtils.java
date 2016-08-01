@@ -5,17 +5,21 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.TypedValue;
 
 import com.duongkk.apkextract.R;
+
+import java.io.File;
 
 /**
  * Created by MyPC on 6/28/2016.
@@ -80,6 +84,16 @@ public class CommonUtils {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bmResult;
+    }
+
+    public static Intent getShareIntent(File file) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+        intent.setType("application/vnd.android.package-archive");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        return intent;
     }
 //    public static boolean verifyEditext(Context context, @Nullable EditText mEdtPass, @Nullable EditText mEdtFirstName,@Nullable EditText mEdtLastName, @Nullable EditText mEdtPass2, @Nullable EditText mEdtAddress, @Nullable EditText mEdtPhone) {
 //        if (mEdtPhone != null && (mEdtPhone.getText().length() < 9 || mEdtPhone.getText().length() > 11)) {

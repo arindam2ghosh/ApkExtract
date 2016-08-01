@@ -13,4 +13,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="icon_app_size">48dp</dimen>
+    <dimen name="elevation">10dp</dimen>
 </resources>

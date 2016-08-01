@@ -22,13 +22,13 @@
 
                 android:iconifiedByDefault="true"
                 android:orderInCategory="100"
-                android:title="Theo Aphabet"
+                android:title="@string/sort_apha"
                 app:showAsAction="collapseActionView|ifRoom" />
             <item
                 android:id="@+id/action_sort_size"
                 android:iconifiedByDefault="true"
                 android:orderInCategory="100"
-                android:title="Theo kích thước"
+                android:title="@string/options3"
                 app:showAsAction="collapseActionView|ifRoom" />
 
         </menu>
@@ -48,22 +48,54 @@
 
                 android:iconifiedByDefault="true"
                 android:orderInCategory="100"
-                android:title="Tất cả"
+                android:title="@string/filter_all"
                 app:showAsAction="collapseActionView|ifRoom" />
             <item
                 android:id="@+id/action_filter_user"
 
                 android:iconifiedByDefault="true"
                 android:orderInCategory="100"
-                android:title="Ứng dụng đã cài đặt"
+                android:title="@string/filter_user"
                 app:showAsAction="collapseActionView|ifRoom" />
             <item
                 android:id="@+id/action_filter_system"
                 android:iconifiedByDefault="true"
                 android:orderInCategory="100"
-                android:title="Ứng dụng hệ thống"
+                android:title="@string/filter_system"
                 app:showAsAction="collapseActionView|ifRoom" />
         </menu>
 
     </item>
+    <!--<item-->
+        <!--android:id="@+id/action_menu"-->
+      <!---->
+        <!--android:iconifiedByDefault="true"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="Menu"-->
+        <!--app:showAsAction="collapseActionView">-->
+
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/action_grid"-->
+
+                <!--android:iconifiedByDefault="true"-->
+                <!--android:orderInCategory="100"-->
+                <!--android:title="Xem dạng lưới"-->
+                <!--app:showAsAction="collapseActionView|ifRoom" />-->
+            <!--<item-->
+                <!--android:id="@+id/action_linner"-->
+
+                <!--android:iconifiedByDefault="true"-->
+                <!--android:orderInCategory="100"-->
+                <!--android:title="Xem dạng danh sách"-->
+                <!--app:showAsAction="collapseActionView|ifRoom" />-->
+            <!--<item-->
+                <!--android:id="@+id/action_about"-->
+                <!--android:iconifiedByDefault="true"-->
+                <!--android:orderInCategory="100"-->
+                <!--android:title="Thông tin"-->
+                <!--app:showAsAction="collapseActionView|ifRoom" />-->
+        <!--</menu>-->
+
+    <!--</item>-->
 </menu>

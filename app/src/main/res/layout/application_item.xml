@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:minHeight="?attr/listPreferredItemHeightLarge">
 
     <LinearLayout
-
         android:id="@+id/card_application"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
+        android:layout_height="match_parent"
+        android:background="?selectableItemBackground"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:padding="@dimen/margin_medium">
 
         <ImageView
             android:id="@+id/icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:maxHeight="@android:dimen/app_icon_size"
+            android:maxWidth="@android:dimen/app_icon_size"
             android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/margin_small"
             android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginRight="@dimen/margin_small"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:orientation="vertical">
@@ -41,19 +48,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="package" />
+
         </LinearLayout>
+
+        <com.nightonke.boommenu.BoomMenuButton
+            android:id="@+id/boom_circle"
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            app:boom_inList="true" />
 
         <CheckBox
             android:id="@+id/cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center"
-            android:layout_marginRight="@dimen/margin_medium" />
+            android:layout_marginRight="@dimen/margin_medium"
+            android:visibility="gone" />
     </LinearLayout>
 
     <View
+        android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/divider" />
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/checkBoxLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_bolder_active"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorAccent"
+            android:checked="true"
+            android:src="@drawable/ic_done_black_24dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</FrameLayout>

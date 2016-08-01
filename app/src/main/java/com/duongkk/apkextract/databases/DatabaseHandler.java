@@ -30,12 +30,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    public List<Application> getAllRows() {
+    public List<Application> getAllRows() throws Exception {
         List<Application> listApps = new ArrayList<>();
-        String query = "Select * from " + TABLE_NAME;
+        String query = "Select * from " + TABLE_NAME + " ORDER BY " + KEY_NAME +" ASC";
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        while (cursor.moveToNext()) {
+        while ( cursor!=null && cursor.moveToNext()) {
             Application app = new Application();
             app.setmName(cursor.getString(cursor.getColumnIndex(KEY_NAME)));
             app.setSystemApp(cursor.getInt(cursor.getColumnIndex(KEY_SYSAPP)) == 1 ? true : false);
@@ -43,20 +43,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             app.setmPackage(cursor.getString(cursor.getColumnIndex(KEY_PACKAGE)));
             byte[] image = cursor.getBlob(cursor.getColumnIndex(KEY_ICON));
             app.setmBitmapIcon(DbBitmapUtility.getImage(image));
-
             listApps.add(app);
 
         }
-        String querysys = "Select * from " + TABLE_NAME_SYS;
+        String querysys = "Select * from " + TABLE_NAME_SYS + " ORDER BY " + KEY_NAME +" ASC";
 
         Cursor cursorsys = db.rawQuery(querysys, null);
-        while (cursorsys.moveToNext()) {
+        while (cursorsys!=null && cursorsys.moveToNext()) {
             Application app = new Application();
-            app.setmName(cursorsys.getString(cursor.getColumnIndex(KEY_NAME)));
-            app.setSystemApp(cursorsys.getInt(cursor.getColumnIndex(KEY_SYSAPP)) == 1 ? true : false);
-            app.setmPath(cursorsys.getString(cursor.getColumnIndex(KEY_PATH)));
-            app.setmPackage(cursorsys.getString(cursor.getColumnIndex(KEY_PACKAGE)));
-            byte[] image = cursorsys.getBlob(cursor.getColumnIndex(KEY_ICON));
+            app.setmName(cursorsys.getString(cursorsys.getColumnIndex(KEY_NAME)));
+            app.setSystemApp(cursorsys.getInt(cursorsys.getColumnIndex(KEY_SYSAPP)) == 1 ? true : false);
+            app.setmPath(cursorsys.getString(cursorsys.getColumnIndex(KEY_PATH)));
+            app.setmPackage(cursorsys.getString(cursorsys.getColumnIndex(KEY_PACKAGE)));
+            byte[] image = cursorsys.getBlob(cursorsys.getColumnIndex(KEY_ICON));
             app.setmBitmapIcon(DbBitmapUtility.getImage(image));
 
             listApps.add(app);
@@ -65,19 +64,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return listApps;
     }
 
+    public void removeRow(String packageNam) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        int remove1 = database.delete(TABLE_NAME, KEY_PACKAGE + "=?", new String[]{packageNam});
+        int remove2 = database.delete(TABLE_NAME_SYS, KEY_PACKAGE + "=?", new String[]{packageNam});
+
+    }
+
     public long insertRow(Application app) {
         SQLiteDatabase database = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(KEY_NAME, app.getmName());
-        cv.put(KEY_ICON, DbBitmapUtility.getBytes(app.getmBitmapIcon()));
-        cv.put(KEY_PACKAGE, app.getmPackage());
-        cv.put(KEY_PATH, app.getmPath());
-        cv.put(KEY_SYSAPP, app.isSystemApp() == true ? 1 : 0);
-        if (app.isSystemApp()) {
-            return database.insert(TABLE_NAME_SYS, null, cv);
-        }else {
-            return database.insert(TABLE_NAME, null, cv);
+        String querysys = "Select * from " + TABLE_NAME + " where " + KEY_PACKAGE +  " = ' " + app.getmPackage() + " ' ";
+        Cursor cursor = database.rawQuery(querysys, null);
+
+        if (cursor == null || !cursor.moveToFirst()) {
+
+            ContentValues cv = new ContentValues();
+            cv.put(KEY_NAME, app.getmName());
+            cv.put(KEY_ICON, DbBitmapUtility.getBytes(app.getmBitmapIcon()));
+            cv.put(KEY_PACKAGE, app.getmPackage());
+            cv.put(KEY_PATH, app.getmPath());
+            cv.put(KEY_SYSAPP, app.isSystemApp() == true ? 1 : 0);
+            if (app.isSystemApp()) {
+                return database.insert(TABLE_NAME_SYS, null, cv);
+            } else {
+                return database.insert(TABLE_NAME, null, cv);
+            }
         }
+        return 0;
     }
 
     @Override

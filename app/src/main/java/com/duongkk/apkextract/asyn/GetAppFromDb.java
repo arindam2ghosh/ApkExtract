@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.duongkk.apkextract.Utils.LogX;
 import com.duongkk.apkextract.adapter.AdapterApplication;
 import com.duongkk.apkextract.databases.DatabaseHandler;
 import com.duongkk.apkextract.models.Application;
@@ -23,8 +24,9 @@ public class GetAppFromDb extends AsyncTask<Void,Void,List<Application>> {
     private Context context;
     private List<Application> sysApp;
     private List<Application> userApp;
+    private OnLoadFail onLoadFail;
     public GetAppFromDb(Context context, ProgressBar progressBar, DatabaseHandler db, List<Application> sysapplications,
-                        List<Application> Userlications , List<Application> applications, AdapterApplication mAdapter){
+                        List<Application> Userlications , List<Application> applications, AdapterApplication mAdapter,OnLoadFail onLoadFail){
         this.progressBar = progressBar;
         progressBar.setVisibility(View.VISIBLE);
         this.db =db;
@@ -33,6 +35,7 @@ public class GetAppFromDb extends AsyncTask<Void,Void,List<Application>> {
         this.context = context;
         this.sysApp = sysapplications;
         this.userApp=Userlications;
+        this.onLoadFail = onLoadFail;
     }
     @Override
     protected void onPreExecute() {
@@ -42,7 +45,12 @@ public class GetAppFromDb extends AsyncTask<Void,Void,List<Application>> {
     @Override
     protected List<Application> doInBackground(Void... voids) {
         List<Application> mListApps=new ArrayList<>();
-        mListApps.addAll(db.getAllRows());
+        try {
+            mListApps.addAll(db.getAllRows());
+        } catch (Exception e) {
+            e.printStackTrace();
+            LogX.e(e.toString());
+        }
         for (Application app:mListApps) {
             if(app.isSystemApp()){
                 sysApp.add(app);
@@ -59,8 +67,14 @@ public class GetAppFromDb extends AsyncTask<Void,Void,List<Application>> {
         progressBar.setVisibility(View.GONE);
        this.applications.clear();
        this.applications.addAll(applications);
+        if(this.applications.size()==0) onLoadFail.onLoadFail();
         mAdapter.notifyDataSetChanged();
 //
 
     }
+
+    public interface OnLoadFail{
+        public void onLoadFail();
+    }
+
 }
