@@ -1,8 +1,12 @@
 # ApkExtract
 Extract mutil application in android
-Link PlayStore : https://play.google.com/store/apps/details?id=com.duongkk.apkextract
+
+
+\nLink PlayStore : https://play.google.com/store/apps/details?id=com.duongkk.apkextract
 
 ★ Fast and easy to use.
+
+
 ★ Extracts almost all application,including system applications.
 ★ No ROOT access required.
 ★ Apk's will be saved in /sdcard/Apk Extract/.
